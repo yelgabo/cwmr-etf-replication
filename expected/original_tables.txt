@@ -1,0 +1,11 @@
+93 stocks, 3019 days, 1998-01-02 to 2009-12-31
+Final wealth (paper's Tables 3-4): CWMR 1,590.38x, PAMR 788.26x, Anticor 36.89x, FTRL 15.25x, CRP 12.16x
+
+Table 3. The authors' data, 1998-2009
+                                  CAGR  p vs CRP
+CRP                              23.2%          
+CWMR                             85.0%    0.0000
+CWMR, 10 bp                      43.6%    0.2872
+CWMR, one-day delay              45.6%    0.1057
+PAMR, one-day delay              51.9%    0.0002
+PAMR, one-day delay and 5 bp     33.9%    0.4862

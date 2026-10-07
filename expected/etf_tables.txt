@@ -1,0 +1,22 @@
+Table 5. Pre-registered test, 1999-2015, 0.7 bp per dollar traded
+                  CAGR  Sharpe   Max DD  Turnover  p vs SPY  p vs EW
+Weekly bars      9.82%    0.45   -50.1%     79.2x      0.11     0.33
+Monthly bars     8.90%    0.40   -61.4%     14.0x      0.17     0.52
+Equal weight     6.61%    0.33   -54.4%      0.3x      0.10         
+SPY              4.90%    0.25   -55.2%      0.0x                   
+
+Table 6. Weekly bars by the session that ends each week, 1999-2024, 0.7 bp, CAGR
+                              1999-2015  2016-2024  1999-2024
+Calendar weeks (Friday)            9.9%      16.4%      12.1%
+5-session blocks, offset 0         9.0%      14.8%      11.0%
+5-session blocks, offset 1         9.3%      13.7%      10.8%
+5-session blocks, offset 2        13.4%      13.6%      13.5%
+5-session blocks, offset 3         7.8%      13.2%       9.6%
+5-session blocks, offset 4         9.4%      11.6%      10.1%
+Equal weight                       6.6%      11.8%       8.4%
+SPY                                4.9%      14.4%       8.1%
+
+Table 7. Weekly bars at higher costs per dollar traded, CAGR
+                  0.7 bp        5 bp       10 bp       20 bp
+1999-2015          9.82%       6.24%       2.23%      -5.35%
+1999-2024         12.10%       8.50%       4.46%      -3.17%
