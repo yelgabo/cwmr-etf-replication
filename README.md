@@ -1,7 +1,7 @@
 # Replication code: mean-reversion portfolio selection on US-listed ETFs
 
-Code for Gabo (2026), "Mean-Reversion Portfolio Selection on US-Listed ETFs, 1999-2026: A
-Replication with Pre-Registered Tests". It reproduces the paper's tables from public data.
+Code for Gabo (2026), "Does Online Mean-Reversion Survive Trading Costs? A Reproduction and
+Pre-Registered Tests on US-Listed ETFs". It reproduces the paper's tables from public data.
 
 ## Run
 
