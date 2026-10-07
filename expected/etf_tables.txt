@@ -5,14 +5,14 @@ Monthly bars     8.90%    0.40   -61.4%     14.0x
 Equal weight     6.61%    0.33   -54.4%      0.3x
 SPY              4.90%    0.25   -55.2%      0.0x
 
-Table 5b. Paired Sharpe tests, 1999-2015: annual Sharpe difference, Jobson-Korkie-Memmel p, 21-day block bootstrap p and 95% interval
+Table 6. Paired Sharpe tests, 1999-2015: annual Sharpe difference, Jobson-Korkie-Memmel p, 21-day block bootstrap p and 95% interval
 Weekly bars vs SPY           +0.19    0.11   0.026   [+0.03, +0.37]
 Weekly bars vs Equal weight  +0.11    0.33   0.218   [-0.06, +0.29]
 Monthly bars vs SPY          +0.14    0.17   0.070   [-0.01, +0.30]
 Monthly bars vs Equal weight +0.06    0.52   0.423   [-0.08, +0.20]
 Equal weight vs SPY          +0.08    0.10   0.022   [+0.01, +0.16]
 
-Table 6. Weekly bars by the session that ends each week, 1999-2024, 0.7 bp, CAGR
+Table 7. Weekly bars by where the week ends, 1999-2024, 0.7 bp, CAGR
                               1999-2015  2016-2024  1999-2024
 Calendar weeks (Friday)            9.9%      16.4%      12.1%
 5-session blocks, offset 0         9.0%      14.8%      11.0%
@@ -23,12 +23,12 @@ Calendar weeks (Friday)            9.9%      16.4%      12.1%
 Equal weight                       6.6%      11.8%       8.4%
 SPY                                4.9%      14.4%       8.1%
 
-Table 7. Weekly bars at higher costs per dollar traded, CAGR
+Table 8. Weekly bars at higher costs per dollar traded, CAGR
                   0.7 bp        5 bp       10 bp       20 bp
 1999-2015          9.82%       6.24%       2.23%      -5.35%
 1999-2024         12.10%       8.50%       4.46%      -3.17%
 
-Table 8. Weekly bars traded one session late, 1999-2015, 0.7 bp
+Section 6.4. Weekly bars traded one session late, 1999-2015, 0.7 bp
 Signal at week end, trade a session later    7.36%    0.35   bootstrap p vs EW 0.92
 
 Break-even against equal weight, 1999-2015 (equal weight 6.61%)

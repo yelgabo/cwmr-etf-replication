@@ -9,6 +9,8 @@
 GitHub's event log has no record of this push, so the order rests on the repository history.
 Note added for publication: the plan says "decide and fill at the close". Orders were later
 moved to fill at the next session's open and both variants rerun once (paper Section 7).
+The plan's "Neither has been run before 1999" refers to data before 1999; neither variant had
+been run on any data before 2016 either, as the paper states in Section 6.
 
 ## Text as committed
 

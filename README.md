@@ -8,9 +8,10 @@ Pre-Registered Tests on US-Listed ETFs". It reproduces the paper's tables from p
 Requires [uv](https://docs.astral.sh/uv/) and Python 3.11 or later.
 
 ```sh
-uv run python etf_tables.py                                    # Tables 5 to 8
+uv run python etf_tables.py                                    # Tables 5 to 8 and Section 6.4
 uv run python autocorrelation.py                               # Section 8 autocorrelations
 uv run python spreads.py                                       # Section 6.3 spread estimates
+uv run python robustness.py                                    # block lengths, Holm, concentration, where the reversal happens
 uv run --with scipy --with cvxpy python original_tables.py     # Section 3 and Table 3
 ```
 
@@ -29,6 +30,7 @@ functions unchanged. The outputs we got are in `expected/`.
 | `cwmr_etf/stats.py` | CAGR, Sharpe ratio over T-bills, max drawdown, turnover, Jobson-Korkie test with Memmel's correction, block bootstrap |
 | `etf_tables.py` | CWMR on weekly and monthly bars over 16 ETFs, 1999-2024, with SPY and equal-weight benchmarks, paired tests and a one-session-late variant |
 | `autocorrelation.py` | Next-day autocorrelation of each ETF's return in excess of SPY's, by period |
+| `robustness.py` | Bootstrap p-values by block length, Holm-adjusted p-values, concentration, how often the CWMR update fires, and where the weekly reversal happens |
 | `spreads.py` | Yearly half-spreads estimated from daily prices (EDGE, via the authors' `bidask` package), checked against spreads measured from 2016-2024 quotes |
 | `preregistrations/` | The three test plans, word for word as committed, with commit hashes and times |
 | `original_tables.py` | The original paper's results from its own data and code |

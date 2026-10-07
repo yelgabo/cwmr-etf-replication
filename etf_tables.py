@@ -1,4 +1,4 @@
-"""Tables 5 to 8 of the paper: CWMR on weekly and monthly bars over 16 ETFs, 1999-2024.
+"""Tables 5 to 8 and Section 6.4 of the paper: CWMR on weekly and monthly bars over 16 ETFs, 1999-2024.
 
     uv run python etf_tables.py
 
@@ -77,7 +77,7 @@ res = {name: run(S2016, f, on) for name, (f, on) in strategies(S2016).items()}
 for name, r in res.items():
     c, sh, dd, to = describe(r)
     print(f"{name:14}{c:8.2%}{sh:8.2f}{dd:9.1%}{to:9.1f}x")
-print("\nTable 5b. Paired Sharpe tests, 1999-2015: annual Sharpe difference, Jobson-Korkie-Memmel"
+print("\nTable 6. Paired Sharpe tests, 1999-2015: annual Sharpe difference, Jobson-Korkie-Memmel"
       " p, 21-day block bootstrap p and 95% interval")
 for a, b in (("Weekly bars", "SPY"), ("Weekly bars", "Equal weight"), ("Monthly bars", "SPY"),
              ("Monthly bars", "Equal weight"), ("Equal weight", "SPY")):
@@ -85,7 +85,7 @@ for a, b in (("Weekly bars", "SPY"), ("Weekly bars", "Equal weight"), ("Monthly 
     d, p, (lo, hi) = stats.block_bootstrap(res[a].equity, res[b].equity)
     print(f"{a + ' vs ' + b:28}{d:+6.2f}{jk:8.2f}{p:8.3f}   [{lo:+.2f}, {hi:+.2f}]")
 
-print("\nTable 6. Weekly bars by the session that ends each week, 1999-2024, 0.7 bp, CAGR")
+print("\nTable 7. Weekly bars by where the week ends, 1999-2024, 0.7 bp, CAGR")
 print(f"{'':28}{'1999-2015':>11}{'2016-2024':>11}{'1999-2024':>11}")
 days25, closes25, _ = PANELS[S2025]
 versions = {"Calendar weeks (Friday)": (cwmr(days25, closes25, "weekly"), weekly_on)}
@@ -100,7 +100,7 @@ for name, (f, on) in versions.items():
              for lo, hi in ((S1999, S2016), (S2016, S2025), (S1999, S2025))]
     print(f"{name:28}" + "".join(f"{c:11.1%}" for c in cells))
 
-print("\nTable 7. Weekly bars at higher costs per dollar traded, CAGR")
+print("\nTable 8. Weekly bars at higher costs per dollar traded, CAGR")
 print(f"{'':12}" + "".join(f"{bp:>9} bp" for bp in (0.7, 5, 10, 20)))
 for end in (S2016, S2025):
     days, closes, _ = PANELS[end]
@@ -110,7 +110,7 @@ for end in (S2016, S2025):
         row.append(stats.cagr(r.days, r.equity))
     print(f"1999-{end.year - 1:<7}" + "".join(f"{c:12.2%}" for c in row))
 
-print("\nTable 8. Weekly bars traded one session late, 1999-2015, 0.7 bp")
+print("\nSection 6.4. Weekly bars traded one session late, 1999-2015, 0.7 bp")
 days, closes, _ = PANELS[S2016]
 late = OnlineCWMR(UNIVERSE, closes, days, bars="weekly")
 after_week_end = {days[i + 1] for i, d in enumerate(days[:-1]) if d in weekly_on}
