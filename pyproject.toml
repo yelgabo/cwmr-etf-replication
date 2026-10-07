@@ -1,7 +1,7 @@
 [project]
 name = "cwmr-etf-replication"
 version = "1.0.0"
-description = "Replication code for 'Does Online Mean-Reversion Survive Trading Costs? A Reproduction and Pre-Registered Tests on US-Listed ETFs'"
+description = "Replication code for 'Does Online Mean-Reversion Beat Equal Weight? A Reproduction and Pre-Registered Tests on US-Listed ETFs'"
 requires-python = ">=3.11"
 dependencies = [
     "bidask>=2.1",
