@@ -1,7 +1,8 @@
 """Public data: Yahoo Finance daily bars, FRED's 3-month T-bill rate, the NYSE calendar.
 
 Downloads are cached under data/ so reruns use the same snapshot. Yahoo's adjusted closes
-include dividends and splits; the open is scaled by the same day's adjustment factor.
+include dividends and splits; the open, high and low are scaled by the same day's adjustment
+factor.
 """
 import json
 import time
@@ -27,8 +28,10 @@ def sessions(start: date, end: date) -> list[date]:
 
 
 def yahoo(symbol: str) -> pd.DataFrame:
-    """Daily adjusted open and close for one symbol, from its first trading day."""
+    """Daily adjusted open, high, low and close for one symbol, from its first trading day."""
     path = CACHE / f"{symbol}.csv"
+    if path.exists() and "high" not in path.read_text().split("\n", 1)[0]:
+        path.unlink()  # cached before high and low were kept
     if not path.exists():
         url = (f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}"
                "?period1=0&period2=4000000000&interval=1d&events=div,split")
@@ -38,11 +41,14 @@ def yahoo(symbol: str) -> pd.DataFrame:
         days = [datetime.fromtimestamp(t + r["meta"]["gmtoffset"], UTC).date()
                 for t in r["timestamp"]]
         q = r["indicators"]["quote"][0]
-        df = pd.DataFrame({"date": days, "open": q["open"], "raw_close": q["close"],
+        df = pd.DataFrame({"date": days, "open": q["open"], "high": q["high"], "low": q["low"],
+                           "raw_close": q["close"],
                            "close": r["indicators"]["adjclose"][0]["adjclose"]}).dropna()
-        df["open"] = df["open"] * df["close"] / df["raw_close"]
+        factor = df["close"] / df["raw_close"]
+        for c in ("open", "high", "low"):
+            df[c] = df[c] * factor
         CACHE.mkdir(exist_ok=True)
-        df[["date", "open", "close"]].to_csv(path, index=False)
+        df[["date", "open", "high", "low", "close"]].to_csv(path, index=False)
     return pd.read_csv(path, parse_dates=["date"]).assign(date=lambda d: d["date"].dt.date)
 
 

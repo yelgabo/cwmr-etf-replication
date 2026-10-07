@@ -14,10 +14,25 @@ resolution-markers = [
 ]
 
 [[package]]
+name = "bidask"
+version = "2.1.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "numpy", version = "2.5.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "pandas" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/b2/00/b415dfe911f8bb02a2221c26bb8d8b3a9389b5293de435ba62a3a418d5a9/bidask-2.1.0.tar.gz", hash = "sha256:eb4c89a1381f4f1299aa36b1c60d845bc325e4fc2fbde6a0703bf6b48b47f600", size = 5632, upload-time = "2024-12-22T18:21:43.002Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/8d/56/adb8b70d385ff1f04cc2b680dd918faec3152137f78d7300ecca6b2a7049/bidask-2.1.0-py3-none-any.whl", hash = "sha256:8cbd4e27a53800f041ebaa343656984552ad00f6c4407359a2230c9fbf81a5c3", size = 7967, upload-time = "2024-12-22T18:21:40.566Z" },
+]
+
+[[package]]
 name = "cwmr-etf-replication"
 version = "1.0.0"
 source = { editable = "." }
 dependencies = [
+    { name = "bidask" },
     { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
     { name = "numpy", version = "2.5.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
     { name = "pandas" },
@@ -26,6 +41,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
+    { name = "bidask", specifier = ">=2.1" },
     { name = "numpy", specifier = ">=1.26" },
     { name = "pandas", specifier = ">=2.1" },
     { name = "pandas-market-calendars", specifier = ">=4.4" },

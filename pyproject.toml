@@ -3,7 +3,12 @@ name = "cwmr-etf-replication"
 version = "1.0.0"
 description = "Replication code for 'Mean-Reversion Portfolio Selection on US-Listed ETFs, 1999-2026'"
 requires-python = ">=3.11"
-dependencies = ["numpy>=1.26", "pandas>=2.1", "pandas-market-calendars>=4.4"]
+dependencies = [
+    "bidask>=2.1",
+    "numpy>=1.26",
+    "pandas>=2.1",
+    "pandas-market-calendars>=4.4",
+]
 
 [build-system]
 requires = ["hatchling"]

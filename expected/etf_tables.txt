@@ -7,7 +7,7 @@ SPY              4.90%    0.25   -55.2%      0.0x
 
 Table 5b. Paired Sharpe tests, 1999-2015: annual Sharpe difference, Jobson-Korkie-Memmel p, 21-day block bootstrap p and 95% interval
 Weekly bars vs SPY           +0.19    0.11   0.026   [+0.03, +0.37]
-Weekly bars vs Equal weight  +0.11    0.33   0.217   [-0.06, +0.29]
+Weekly bars vs Equal weight  +0.11    0.33   0.218   [-0.06, +0.29]
 Monthly bars vs SPY          +0.14    0.17   0.070   [-0.01, +0.30]
 Monthly bars vs Equal weight +0.06    0.52   0.423   [-0.08, +0.20]
 Equal weight vs SPY          +0.08    0.10   0.022   [+0.01, +0.16]
