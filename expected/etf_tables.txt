@@ -30,3 +30,7 @@ Table 7. Weekly bars at higher costs per dollar traded, CAGR
 
 Table 8. Weekly bars traded one session late, 1999-2015, 0.7 bp
 Signal at week end, trade a session later    7.36%    0.35   bootstrap p vs EW 0.92
+
+Break-even against equal weight, 1999-2015 (equal weight 6.61%)
+Weekly bars at 4 bp: 7.06%
+Weekly bars at 4.5 bp: 6.65%
