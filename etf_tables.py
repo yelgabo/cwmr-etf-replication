@@ -1,4 +1,4 @@
-"""Tables 5, 6 and 7 of the paper: CWMR on weekly and monthly bars over 16 ETFs, 1999-2024.
+"""Tables 5 to 8 of the paper: CWMR on weekly and monthly bars over 16 ETFs, 1999-2024.
 
     uv run python etf_tables.py
 
@@ -9,8 +9,7 @@ from datetime import date
 from cwmr_etf import backtest, data, stats
 from cwmr_etf.cwmr import OnlineCWMR
 
-UNIVERSE = ["SPY", "QQQ", "IWM", "DIA", "EFA", "EEM", "XLK", "XLF", "XLV", "XLE", "XLI", "XLY",
-            "XLP", "XLU", "XLB", "XLRE"]
+UNIVERSE = data.ETFS
 S1999, S2016, S2025 = date(1999, 1, 1), date(2016, 1, 1), date(2025, 1, 1)
 RATES = data.tbill()
 CALENDAR = data.sessions(data.START, date(2027, 12, 31))
@@ -73,14 +72,18 @@ def strategies(end):
 
 
 print("Table 5. Pre-registered test, 1999-2015, 0.7 bp per dollar traded")
-print(f"{'':14}{'CAGR':>8}{'Sharpe':>8}{'Max DD':>9}{'Turnover':>10}{'p vs SPY':>10}{'p vs EW':>9}")
+print(f"{'':14}{'CAGR':>8}{'Sharpe':>8}{'Max DD':>9}{'Turnover':>10}")
 res = {name: run(S2016, f, on) for name, (f, on) in strategies(S2016).items()}
 for name, r in res.items():
     c, sh, dd, to = describe(r)
-    p_spy = "" if name == "SPY" else f"{stats.paired_sharpe_test(r.equity, res['SPY'].equity)[1]:.2f}"
-    p_ew = (f"{stats.paired_sharpe_test(r.equity, res['Equal weight'].equity)[1]:.2f}"
-            if name.endswith("bars") else "")
-    print(f"{name:14}{c:8.2%}{sh:8.2f}{dd:9.1%}{to:9.1f}x{p_spy:>10}{p_ew:>9}")
+    print(f"{name:14}{c:8.2%}{sh:8.2f}{dd:9.1%}{to:9.1f}x")
+print("\nTable 5b. Paired Sharpe tests, 1999-2015: annual Sharpe difference, Jobson-Korkie-Memmel"
+      " p, 21-day block bootstrap p and 95% interval")
+for a, b in (("Weekly bars", "SPY"), ("Weekly bars", "Equal weight"), ("Monthly bars", "SPY"),
+             ("Monthly bars", "Equal weight"), ("Equal weight", "SPY")):
+    jk = stats.paired_sharpe_test(res[a].equity, res[b].equity)[1]
+    d, p, (lo, hi) = stats.block_bootstrap(res[a].equity, res[b].equity)
+    print(f"{a + ' vs ' + b:28}{d:+6.2f}{jk:8.2f}{p:8.3f}   [{lo:+.2f}, {hi:+.2f}]")
 
 print("\nTable 6. Weekly bars by the session that ends each week, 1999-2024, 0.7 bp, CAGR")
 print(f"{'':28}{'1999-2015':>11}{'2016-2024':>11}{'1999-2024':>11}")
@@ -106,3 +109,12 @@ for end in (S2016, S2025):
         r = run(end, cwmr(days, closes, "weekly"), weekly_on, cost_bps=bp)
         row.append(stats.cagr(r.days, r.equity))
     print(f"1999-{end.year - 1:<7}" + "".join(f"{c:12.2%}" for c in row))
+
+print("\nTable 8. Weekly bars traded one session late, 1999-2015, 0.7 bp")
+days, closes, _ = PANELS[S2016]
+late = OnlineCWMR(UNIVERSE, closes, days, bars="weekly")
+after_week_end = {days[i + 1] for i, d in enumerate(days[:-1]) if d in weekly_on}
+r = run(S2016, lambda i, account: late.weights(i - 1), after_week_end)
+c, sh, dd, to = describe(r)
+p_ew = stats.block_bootstrap(r.equity, res["Equal weight"].equity)[1]
+print(f"{'Signal at week end, trade a session later':42}{c:8.2%}{sh:8.2f}   bootstrap p vs EW {p_ew:.2f}")

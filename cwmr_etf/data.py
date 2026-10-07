@@ -15,6 +15,8 @@ import pandas_market_calendars as mcal
 
 CACHE = Path(__file__).resolve().parent.parent / "data"
 START = date(1995, 1, 3)
+ETFS = ["SPY", "QQQ", "IWM", "DIA", "EFA", "EEM", "XLK", "XLF", "XLV", "XLE", "XLI", "XLY", "XLP",
+        "XLU", "XLB", "XLRE"]
 UA = {"User-Agent": "Mozilla/5.0"}
 
 

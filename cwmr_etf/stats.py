@@ -50,3 +50,23 @@ def window(days: list[date], equity: np.ndarray, lo: date, hi: date):
     if ks[0] > 0:
         ks = [ks[0] - 1] + ks
     return [days[k] for k in ks], equity[ks]
+
+
+def block_bootstrap(eq1: np.ndarray, eq2: np.ndarray, block: int = 21, draws: int = 10_000,
+                    seed: int = 0) -> tuple[float, float, tuple[float, float]]:
+    """Moving-block bootstrap of the annualised Sharpe ratio difference (Kunsch, 1989). Blocks
+    of `block` days keep the short-range dependence and fat tails that the Jobson-Korkie test
+    assumes away. Returns the difference, a two-sided p-value for no difference, and a 95%
+    percentile interval."""
+    r1, r2 = eq1[1:] / eq1[:-1] - 1, eq2[1:] / eq2[:-1] - 1
+    diff = (r1.mean() / r1.std() - r2.mean() / r2.std()) * math.sqrt(TRADING_DAYS)
+    rng = np.random.default_rng(seed)
+    n, k = len(r1), len(r1) // block
+    offsets = np.arange(block)
+    out = np.empty(draws)
+    for j in range(draws):
+        idx = (rng.integers(0, n - block, k)[:, None] + offsets).ravel()
+        a, b = r1[idx], r2[idx]
+        out[j] = (a.mean() / a.std() - b.mean() / b.std()) * math.sqrt(TRADING_DAYS)
+    p = float(np.mean(np.abs(out - out.mean()) >= abs(diff)))
+    return float(diff), p, (float(np.percentile(out, 2.5)), float(np.percentile(out, 97.5)))
