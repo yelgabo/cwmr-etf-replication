@@ -1,4 +1,1 @@
-1999-2003: median -0.065 over 14 ETFs
-2004-2008: median -0.092 over 14 ETFs
-2009-2015: median -0.047 over 14 ETFs
-2016-2024: median +0.000 over 15 ETFs
+1999-2024: median -0.036 over 15 ETFs

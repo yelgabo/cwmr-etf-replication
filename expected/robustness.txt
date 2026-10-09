@@ -1,50 +1,24 @@
-Bootstrap p by block length, 1999-2015
-  Weekly bars vs SPY: 1-day 0.093, 5-day 0.056, 21-day 0.023, 63-day 0.007, 126-day 0.006
-  Weekly bars vs Equal weight: 1-day 0.290, 5-day 0.244, 21-day 0.201, 63-day 0.141, 126-day 0.123
-  Monthly bars vs SPY: 1-day 0.171, 5-day 0.113, 21-day 0.071, 63-day 0.062, 126-day 0.074
-  Monthly bars vs Equal weight: 1-day 0.501, 5-day 0.465, 21-day 0.411, 63-day 0.354, 126-day 0.329
+Bootstrap p by block length (1, 5, 21, 63, 126), then Holm-adjusted over the 9 comparisons at each block length
+  Daily vs Equal weight                  0.091, 0.071, 0.066, 0.054, 0.061  | Holm 0.726, 0.509, 0.459, 0.352, 0.430
+  Monthly, daily signal vs Equal weight  0.527, 0.484, 0.450, 0.421, 0.442  | Holm 1.000, 1.000, 1.000, 1.000, 1.000
+  Monthly bars vs Equal weight           0.465, 0.442, 0.395, 0.386, 0.395  | Holm 1.000, 1.000, 1.000, 1.000, 1.000
+  Weekly bars vs Equal weight            0.139, 0.111, 0.083, 0.048, 0.048  | Holm 0.834, 0.665, 0.500, 0.352, 0.384
+  Daily vs SPY                           0.061, 0.043, 0.043, 0.044, 0.065  | Holm 0.550, 0.383, 0.346, 0.352, 0.430
+  Monthly, daily signal vs SPY           0.728, 0.692, 0.657, 0.618, 0.625  | Holm 1.000, 1.000, 1.000, 1.000, 1.000
+  Monthly bars vs SPY                    0.383, 0.332, 0.279, 0.284, 0.303  | Holm 1.000, 1.000, 1.000, 1.000, 1.000
+  Weekly bars vs SPY                     0.098, 0.064, 0.031, 0.017, 0.012  | Holm 0.726, 0.509, 0.278, 0.157, 0.107
+  Equal weight vs SPY                    0.638, 0.565, 0.551, 0.564, 0.595  | Holm 1.000, 1.000, 1.000, 1.000, 1.000
 
-Holm-adjusted bootstrap p (21-day blocks), 1999-2015
-  Weekly bars vs SPY: 0.114
-  Weekly bars vs Equal weight: 0.401
-  Monthly bars vs SPY: 0.214
-  Monthly bars vs Equal weight: 0.411
-  Equal weight vs SPY: 0.114
-
-Bootstrap p by block length, 1999-2024 (Table 7)
-  Weekly bars vs SPY: 1-day 0.098, 5-day 0.064, 21-day 0.031, 63-day 0.017, 126-day 0.012
-  Weekly bars vs Equal weight: 1-day 0.139, 5-day 0.111, 21-day 0.083, 63-day 0.048, 126-day 0.048
-  Monthly bars vs SPY: 1-day 0.383, 5-day 0.332, 21-day 0.279, 63-day 0.284, 126-day 0.303
-  Monthly bars vs Equal weight: 1-day 0.465, 5-day 0.442, 21-day 0.395, 63-day 0.386, 126-day 0.395
-  Equal weight vs SPY: 1-day 0.638, 5-day 0.565, 21-day 0.551, 63-day 0.564, 126-day 0.595
-Holm-adjusted bootstrap p (21-day blocks), 1999-2024
-  Weekly bars vs SPY: 0.154
-  Weekly bars vs Equal weight: 0.334
-  Monthly bars vs SPY: 0.838
-  Monthly bars vs Equal weight: 0.838
-  Equal weight vs SPY: 0.838
-
-Holm-adjusted bootstrap p at each block length (1, 5, 21, 63, 126 days)
-  1999-2015 Weekly bars vs SPY: 0.464, 0.224, 0.114, 0.036, 0.029
-  1999-2015 Weekly bars vs Equal weight: 0.580, 0.487, 0.401, 0.282, 0.245
-  1999-2015 Monthly bars vs SPY: 0.512, 0.338, 0.214, 0.187, 0.223
-  1999-2015 Monthly bars vs Equal weight: 0.580, 0.487, 0.411, 0.354, 0.329
-  1999-2015 Equal weight vs SPY: 0.464, 0.179, 0.114, 0.124, 0.170
-  1999-2024 Weekly bars vs SPY: 0.489, 0.318, 0.154, 0.087, 0.060
-  1999-2024 Weekly bars vs Equal weight: 0.556, 0.444, 0.334, 0.190, 0.192
-  1999-2024 Monthly bars vs SPY: 1.000, 0.996, 0.838, 0.851, 0.910
-  1999-2024 Monthly bars vs Equal weight: 1.000, 0.996, 0.838, 0.851, 0.910
-  1999-2024 Equal weight vs SPY: 1.000, 0.996, 0.838, 0.851, 0.910
-
-Why longer blocks give smaller p: lag-1 autocorrelation of the daily return difference
-  1999-2015 weekly bars minus equal weight: -0.072
-  1999-2024 weekly bars minus equal weight: -0.058
-Correlation of daily returns, equal weight and SPY, 1999-2015: 0.978
+Lag-1 autocorrelation of the daily return difference (negative: longer blocks give smaller p)
+  Daily minus equal weight: -0.044
+  Monthly, daily signal minus equal weight: -0.089
+  Monthly bars minus equal weight: -0.039
+  Weekly bars minus equal weight: -0.058
+Correlation of daily returns across the paired tests: 0.90 to 0.98
 Weekly bars fills per year: 1999 238, 2000 313, 2001 290
 
-Weekly bars, 1999-2024: 1356 decisions; median ETFs held 2; largest weight 90% or more in 36% of weeks, 50% or more in 80%
-CWMR updates computed: 2919; not firing: 12 (0.41%)
+Weekly bars: 1356 decisions; median ETFs held 2; largest weight 90% or more in 36% of weeks, 50% or more in 80%
+CWMR updates computed (learning from 1995): 2919; not firing: 12 (0.41%)
 
 Next returns per 1% weekly move in excess of SPY, bp
-  1999-2015: close to next open -1.36; next open to the open after -3.29
-  2016-2024: close to next open +2.92; next open to the open after -3.44
+  close to next open +0.10; next open to the open after -3.33

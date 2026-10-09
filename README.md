@@ -8,10 +8,10 @@ Pre-Registered Tests on US-Listed ETFs". It reproduces the paper's tables from p
 Requires [uv](https://docs.astral.sh/uv/) and Python 3.11 or later.
 
 ```sh
-uv run python etf_tables.py                                    # Tables 5 to 9 and Section 6.5
-uv run python autocorrelation.py                               # Section 8 autocorrelations
-uv run python spreads.py                                       # Section 6.4 spread estimates
-uv run python robustness.py                                    # block lengths, Holm, concentration, where the reversal happens
+uv run python etf_tables.py                                    # Tables 4 to 7, Sections 4 to 6 and 8
+uv run python autocorrelation.py                               # Section 9 autocorrelation
+uv run python spreads.py                                       # Section 5 spread estimates
+uv run python robustness.py                                    # block lengths, Holm, autocorrelation of differences, trades a year, concentration, where the reversal happens
 uv run --with scipy --with cvxpy python original_tables.py     # Section 3 and Table 3
 ```
 
@@ -28,8 +28,8 @@ functions unchanged. The outputs we got are in `expected/`.
 | `cwmr_etf/backtest.py` | Daily backtest: decide on a session's close, fill at the next session's open, costs per dollar traded, SEC fee on sales, T-bill interest on cash |
 | `cwmr_etf/data.py` | Yahoo daily bars (dividend-adjusted open and close), FRED DTB3, NYSE calendar |
 | `cwmr_etf/stats.py` | CAGR, Sharpe ratio over T-bills, max drawdown, turnover, Jobson-Korkie test with Memmel's correction, block bootstrap |
-| `etf_tables.py` | CWMR on weekly and monthly bars over 16 ETFs, 1999-2024, with SPY and equal-weight benchmarks, paired tests and a one-session-late variant |
-| `autocorrelation.py` | Next-day autocorrelation of each ETF's return in excess of SPY's, by period |
+| `etf_tables.py` | The four CWMR schedules over 16 ETFs, 1999-2024, with SPY and equal-weight benchmarks: results, paired tests, costs and break-evens, week-end offsets, a one-session-late variant, and the registered 1999-2015 test |
+| `autocorrelation.py` | Next-day autocorrelation of each ETF's return in excess of SPY's, 1999-2024 |
 | `robustness.py` | Bootstrap p-values by block length, Holm-adjusted p-values, concentration, how often the CWMR update fires, and where the weekly reversal happens |
 | `spreads.py` | Yearly half-spreads estimated from daily prices (EDGE, via the authors' `bidask` package), checked against spreads measured from 2016-2024 quotes |
 | `preregistrations/` | The three test plans, word for word as committed, with commit hashes and times |
@@ -37,9 +37,9 @@ functions unchanged. The outputs we got are in `expected/`.
 
 ## Not included
 
-Sections 4 and 5 of the paper (daily trading and the 2025-2026 holdout) used minute bars from
-Alpaca, which need an Alpaca account, and a backtester that trades at 15:45 New York time. Those
-results are not reproduced here.
+The holdout test and the 2016-2024 search that chose its strategy (Section 7) used minute bars
+from Alpaca, which need an Alpaca account, and a backtester that trades at 15:45 New York time.
+Those results are not reproduced here; the backtester is https://github.com/yelgabo/btest.
 
 The Yahoo download uses the chart endpoint behind finance.yahoo.com, which is not an official
 API; it may change or stop working, and Yahoo's terms limit the data to personal use. The data is

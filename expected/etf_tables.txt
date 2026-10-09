@@ -1,48 +1,44 @@
-Table 5. Pre-registered test, 1999-2015, 0.7 bp per dollar traded
-                  CAGR  Sharpe   Max DD  Turnover
-Weekly bars      9.82%    0.45   -50.1%     78.9x
-Monthly bars     8.90%    0.40   -61.4%     13.8x
-Equal weight     6.59%    0.33   -54.4%      0.3x
-SPY              4.90%    0.25   -55.2%      0.0x
+Table 4. 1999-2024, 0.7 bp per dollar traded
+                            CAGR  Sharpe   Max DD  Turnover
+Daily                     12.13%    0.56   -44.7%    170.4x
+Monthly, daily signal      7.72%    0.38   -53.1%     13.8x
+Monthly bars              10.66%    0.49   -61.4%     14.1x
+Weekly bars               12.10%    0.55   -50.1%     76.1x
+Equal weight               8.37%    0.42   -54.4%      0.3x
+SPY                        8.09%    0.40   -55.2%      0.0x
 
-Table 6. Paired Sharpe tests, 1999-2015: annual Sharpe difference, Jobson-Korkie-Memmel p, 21-day block bootstrap p and 95% interval
-Weekly bars vs SPY           +0.20    0.09   0.023   [+0.03, +0.37]
-Weekly bars vs Equal weight  +0.11    0.30   0.201   [-0.06, +0.29]
-Monthly bars vs SPY          +0.14    0.17   0.071   [-0.01, +0.30]
-Monthly bars vs Equal weight +0.06    0.50   0.411   [-0.08, +0.20]
-Equal weight vs SPY          +0.08    0.10   0.023   [+0.02, +0.16]
+Table 5. Paired Sharpe tests: annual Sharpe difference, Jobson-Korkie-Memmel p, 21-day block bootstrap p and 95% interval
+Daily vs Equal weight                  +0.13    0.09   0.066   [-0.01, +0.27]
+Monthly, daily signal vs Equal weight  -0.05    0.53   0.450   [-0.18, +0.07]
+Monthly bars vs Equal weight           +0.05    0.46   0.395   [-0.07, +0.18]
+Weekly bars vs Equal weight            +0.12    0.14   0.083   [-0.02, +0.27]
+Daily vs SPY                           +0.15    0.06   0.043   [+0.01, +0.30]
+Monthly, daily signal vs SPY           -0.03    0.73   0.657   [-0.16, +0.10]
+Monthly bars vs SPY                    +0.07    0.38   0.279   [-0.06, +0.22]
+Weekly bars vs SPY                     +0.14    0.10   0.031   [+0.02, +0.28]
+Equal weight vs SPY                    +0.02    0.63   0.551   [-0.04, +0.09]
 
-Table 7. Exploratory: the whole period, 1999-2024, 0.7 bp; paired tests as in Table 6
-                  CAGR  Sharpe   Max DD  Turnover
-Weekly bars     12.10%    0.55   -50.1%     76.1x
-Monthly bars    10.66%    0.49   -61.4%     14.1x
-Equal weight     8.37%    0.42   -54.4%      0.3x
-SPY              8.09%    0.40   -55.2%      0.0x
-Weekly bars vs SPY           +0.14    0.10   0.031   [+0.02, +0.28]
-Weekly bars vs Equal weight  +0.12    0.14   0.083   [-0.02, +0.27]
-Monthly bars vs SPY          +0.07    0.38   0.279   [-0.06, +0.22]
-Monthly bars vs Equal weight +0.05    0.46   0.395   [-0.07, +0.18]
-Equal weight vs SPY          +0.02    0.63   0.551   [-0.04, +0.09]
+Table 6. Costs: CAGR at each cost in bp per dollar traded, and break-even costs
+                              0.7 bp        5 bp       10 bp       20 bp    vs EW   vs SPY
+Daily                         12.13%       1.56%      -9.47%     -25.09%    2.18bp    2.29bp
+Monthly, daily signal          7.72%       6.99%       6.16%       4.50%     none     none
+Monthly bars                  10.66%      10.01%       9.26%       7.78%   16.00bp   17.88bp
+Weekly bars                   12.10%       8.50%       4.46%      -3.17%    5.16bp    5.50bp
 
-Table 8. Weekly bars by where the week ends, 1999-2024, 0.7 bp, CAGR
-                              1999-2015  2016-2024  1999-2024
-Calendar weeks (Friday)            9.8%      16.5%      12.1%
-5-session blocks, offset 0         9.0%      14.8%      11.0%
-5-session blocks, offset 1         9.3%      13.7%      10.8%
-5-session blocks, offset 2        13.4%      13.6%      13.5%
-5-session blocks, offset 3         7.8%      13.2%       9.6%
-5-session blocks, offset 4         9.4%      11.6%      10.1%
-Equal weight                       6.6%      11.8%       8.4%
-SPY                                4.9%      14.4%       8.1%
+Table 7. Weekly bars by where the week ends, 0.7 bp; bootstrap p against equal weight
+                                CAGR  Sharpe  p vs EW
+Calendar weeks (Friday)       12.10%    0.55    0.083
+5-session blocks, offset 0    11.01%    0.51    0.299
+5-session blocks, offset 1    10.80%    0.49    0.411
+5-session blocks, offset 2    13.48%    0.61    0.015
+5-session blocks, offset 3     9.64%    0.44    0.862
+5-session blocks, offset 4    10.13%    0.47    0.603
 
-Table 9. Weekly bars at higher costs per dollar traded, CAGR
-                  0.7 bp        5 bp       10 bp       20 bp
-1999-2015          9.82%       6.25%       2.24%      -5.32%
-1999-2024         12.10%       8.50%       4.46%      -3.17%
+Section 6. Weekly bars traded one session late, 0.7 bp
+Signal at week end, trade a session later    9.51%    0.44   bootstrap p vs EW 0.843
 
-Section 6.5. Weekly bars traded one session late, 1999-2015, 0.7 bp
-Signal at week end, trade a session later    7.37%    0.35   bootstrap p vs EW 0.89
-
-Break-even against equal weight, 1999-2015 (equal weight 6.59%)
-Weekly bars at 4 bp: 7.07%
-Weekly bars at 4.5 bp: 6.66%
+Section 7. The registered 1999-2015 test: CAGR and Sharpe over T-bills, 0.7 bp
+Weekly bars                9.82%    0.45
+Monthly bars               8.90%    0.40
+Equal weight               6.59%    0.33
+SPY                        4.90%    0.25

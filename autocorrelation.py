@@ -1,5 +1,5 @@
-"""Section 8: next-day autocorrelation of each ETF's daily return in excess of SPY's, by period.
-Reports the median across the 15 non-SPY ETFs that trade for most of each period.
+"""Section 8: next-day autocorrelation of each ETF's daily return in excess of SPY's, 1999-2024.
+Reports the median across the 15 non-SPY ETFs.
 
     uv run python autocorrelation.py
 """
@@ -11,7 +11,7 @@ from cwmr_etf import data
 
 days, closes, _ = data.panel(data.ETFS, date(2025, 1, 1))
 spy = closes["SPY"]
-for lo, hi in ((1999, 2003), (2004, 2008), (2009, 2015), (2016, 2024)):
+for lo, hi in ((1999, 2024),):
     ks = [k for k, d in enumerate(days) if lo <= d.year <= hi]
     values = []
     for s in data.ETFS[1:]:
