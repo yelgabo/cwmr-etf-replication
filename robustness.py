@@ -116,6 +116,23 @@ for rank, k in enumerate(np.argsort(lead_p)):
 for (a, b), (lead, lo, hi, p), h in zip(T.PAIRS, leads, lead_holm):
     print(f"  {a + ' vs ' + b:38} {lead:+.2%} [{lo:+.2%}, {hi:+.2%}]  p {p:.3f}  Holm {h:.3f}")
 
+
+def holm_adjust(p):
+    adjusted, running = np.empty(len(p)), 0.0
+    for rank, k in enumerate(np.argsort(p)):
+        running = max(running, min(1.0, (len(p) - rank) * p[k]))
+        adjusted[k] = running
+    return adjusted
+
+
+by_block = [np.array([lead_bootstrap(res[a], res[b], block=k)[3] for a, b in T.PAIRS])
+            for k in BLOCKS]
+print(f"\nReturn-lead bootstrap p by block length {BLOCKS}, then Holm-adjusted over the "
+      f"{len(T.PAIRS)} comparisons at each block length")
+for j, (a, b) in enumerate(T.PAIRS):
+    print(f"  {a + ' vs ' + b:38} " + ", ".join(f"{ps[j]:.3f}" for ps in by_block)
+          + "  | Holm " + ", ".join(f"{holm_adjust(ps)[j]:.3f}" for ps in by_block))
+
 algo = OnlineCWMR(T.UNIVERSE, T.CLOSES, T.DAYS, bars="weekly")
 updates = [0, 0]
 original_update = CWMR.update

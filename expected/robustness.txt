@@ -37,6 +37,17 @@ Annual log-return lead, 21-day block bootstrap: lead [95% interval], p, Holm-adj
   Weekly bars vs SPY                     +3.64% [+1.00%, +6.55%]  p 0.009  Holm 0.085
   Equal weight vs SPY                    +0.26% [-0.89%, +1.51%]  p 0.680  Holm 1.000
 
+Return-lead bootstrap p by block length (1, 5, 21, 63, 126), then Holm-adjusted over the 9 comparisons at each block length
+  Daily vs Equal weight                  0.031, 0.020, 0.021, 0.013, 0.020  | Holm 0.246, 0.162, 0.148, 0.088, 0.141
+  Monthly, daily signal vs Equal weight  0.684, 0.650, 0.607, 0.566, 0.566  | Holm 1.000, 1.000, 1.000, 1.000, 1.000
+  Monthly bars vs Equal weight           0.190, 0.166, 0.115, 0.102, 0.098  | Holm 0.950, 0.767, 0.530, 0.495, 0.491
+  Weekly bars vs Equal weight            0.051, 0.036, 0.021, 0.009, 0.006  | Holm 0.308, 0.219, 0.148, 0.072, 0.052
+  Daily vs SPY                           0.025, 0.017, 0.018, 0.019, 0.031  | Holm 0.224, 0.154, 0.148, 0.112, 0.187
+  Monthly, daily signal vs SPY           0.830, 0.804, 0.777, 0.742, 0.739  | Holm 1.000, 1.000, 1.000, 1.000, 1.000
+  Monthly bars vs SPY                    0.193, 0.153, 0.106, 0.099, 0.103  | Holm 0.950, 0.767, 0.530, 0.495, 0.491
+  Weekly bars vs SPY                     0.044, 0.027, 0.009, 0.005, 0.003  | Holm 0.306, 0.186, 0.085, 0.043, 0.024
+  Equal weight vs SPY                    0.744, 0.688, 0.680, 0.676, 0.706  | Holm 1.000, 1.000, 1.000, 1.000, 1.000
+
 Weekly bars: 1356 decisions; median ETFs held 2; largest weight 90% or more in 36% of weeks, 50% or more in 80%
 Weekly CWMR updates (learning from 1995): 1563; not firing: 6 (0.38%)
 
