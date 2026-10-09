@@ -49,3 +49,10 @@ if __name__ == "__main__":
     for sym, row in est.items():
         vals = [row[y] for y in range(2016, 2025) if row[y] is not None]
         print(f"{sym:6}{MEASURED[sym]:10.2f}{np.median(vals):13.1f}")
+    recent = [row[y] for row in est.values() for y in range(2016, 2025) if row[y] is not None]
+    medians = [np.median([row[y] for y in range(2016, 2025) if row[y] is not None])
+               for row in est.values()]
+    print(f"\n2016-2024 yearly estimates range from {min(recent):.0f} to {max(recent):.0f} bp; "
+          f"medians by ETF from {min(medians):.0f} to {max(medians):.0f} bp; measured "
+          f"half-spreads {min(MEASURED.values()):.2f} to {max(MEASURED.values()):.2f} bp, "
+          f"equal-weight average {np.mean(list(MEASURED.values())):.2f} bp")

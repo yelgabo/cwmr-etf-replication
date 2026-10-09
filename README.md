@@ -1,7 +1,7 @@
 # Replication code: mean-reversion portfolio selection on US-listed ETFs
 
-Code for Gabo (2026), "Does Online Mean-Reversion Beat Equal Weight? A Reproduction and
-Pre-Registered Tests on US-Listed ETFs". It reproduces the paper's tables from public data.
+Code for Gabo (2026), "Does Online Mean-Reversion Beat Equal Weight? A Reproduction and Tests
+of CWMR on US-Listed ETFs". It reproduces the paper's tables from public data.
 
 ## Run
 

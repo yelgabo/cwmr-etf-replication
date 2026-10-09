@@ -1,0 +1,23 @@
+#!/bin/sh
+# The outputs in expected/ are evidence for the paper in ../btest; checks them, as staged, against
+# its claim ledger. Enabled per clone with: git config core.hooksPath .githooks
+staged=$(git diff --cached --name-only)
+if echo "$staged" | grep -qE '^([^/]*\.py|cwmr_etf/.*\.py)$' && ! echo "$staged" | grep -q '^expected/' \
+   && [ "$REPL_OUTPUTS_CHECKED" != 1 ]; then
+  echo "pre-commit: code that produces expected/ changed but no output was regenerated." >&2
+  echo "Regenerate expected/, or set REPL_OUTPUTS_CHECKED=1 after confirming the outputs do not change." >&2
+  exit 1
+fi
+echo "$staged" | grep -qE '^(expected/|preregistrations/|README\.md|[^/]*\.py|cwmr_etf/)' || exit 0
+btest="$(cd .. && pwd)/btest"
+[ -f "$btest/docs/research/paper/check_claims.py" ] || {
+  echo "pre-commit: ../btest not found; clone it beside this repository to check the paper's claims." >&2
+  exit 1
+}
+tmp=$(mktemp -d) && trap 'rm -rf "$tmp"' EXIT
+git checkout-index -a --prefix="$tmp/"
+CWMR_REPLICATION="$tmp" CLAIMS_GIT_REPLICATION="$PWD" CLAIMS_SKIP_PIN=1 \
+  python3 "$btest/docs/research/paper/check_claims.py" || {
+  echo "pre-commit: the paper's claims in ../btest are stale against these outputs; re-derive them first." >&2
+  exit 1
+}

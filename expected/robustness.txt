@@ -54,3 +54,15 @@ Weekly CWMR updates (learning from 1995): 1563; not firing: 6 (0.38%)
 Next returns per 1% weekly move in excess of SPY, bp
   close to next open: +0.10 (s.e. 0.63, clustered by week)
   next open to the open after: -3.33 (s.e. 1.24, clustered by week)
+
+Arithmetic quoted in the paper
+  Daily commissions at $15.75 a trade, 1999-2001: $15,750 to $18,742 (79% to 94% of $20,000)
+  Weekly bars commissions at $15.75 a trade, 1999-2001: $3,748 to $4,930 (19% to 25% of $20,000)
+  One-tick half-spread on a $50 fund at 1/16 dollar: 6.25 bp
+  Daily CAGR minus equal weight: +3.76%
+  Weekly bars CAGR minus equal weight: +3.73%
+  Mean CAGR of the five 5-session offsets minus equal weight: +2.64%
+  p 0.003: |z| 2.97; chance the largest of 100 independent null tests is at least as extreme 0.26
+  p 0.006: |z| 2.75; chance the largest of 100 independent null tests is at least as extreme 0.45
+  XLK on 2015-08-24: low 15.4% below the open
+  ETFs trading on 1999-01-04: 11; all 16 from 2015-10-08

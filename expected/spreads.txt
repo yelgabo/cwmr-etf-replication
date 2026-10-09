@@ -35,3 +35,5 @@ XLP         0.80          4.1
 XLU         0.81          5.0
 XLB         0.82         -2.5
 XLRE        1.35          8.7
+
+2016-2024 yearly estimates range from -34 to 74 bp; medians by ETF from -11 to 17 bp; measured half-spreads 0.17 to 1.68 bp, equal-weight average 0.70 bp

@@ -195,3 +195,33 @@ def slope_clustered(x, y, groups):
 for label, y in (("close to next open", overnight), ("next open to the open after", next_day)):
     beta, se = slope_clustered(x, np.array(y), weeks)
     print(f"  {label}: {beta * 100:+.2f} (s.e. {se * 100:.2f}, clustered by week)")
+
+print("\nArithmetic quoted in the paper")
+for name, per_year in (("Daily", res["Daily"].fills_by_year), ("Weekly bars", res["Weekly bars"].fills_by_year)):
+    cost = [per_year[y] * 15.75 for y in (1999, 2000, 2001)]
+    print(f"  {name} commissions at $15.75 a trade, 1999-2001: ${min(cost):,.0f} to ${max(cost):,.0f} "
+          f"({min(cost) / 20_000:.0%} to {max(cost) / 20_000:.0%} of $20,000)")
+print(f"  One-tick half-spread on a $50 fund at 1/16 dollar: {0.0625 / 2 / 50 * 1e4:.2f} bp")
+ew = stats.cagr(res["Equal weight"].days, res["Equal weight"].equity)
+for name in ("Daily", "Weekly bars"):
+    print(f"  {name} CAGR minus equal weight: {stats.cagr(res[name].days, res[name].equity) - ew:+.2%}")
+offsets = [T.run(T.cwmr(None, block=5), T.offset_days(k)) for k in range(5)]
+print(f"  Mean CAGR of the five 5-session offsets minus equal weight: "
+      f"{np.mean([stats.cagr(r.days, r.equity) for r in offsets]) - ew:+.2%}")
+from statistics import NormalDist
+for p in (0.003, 0.006):
+    print(f"  p {p}: |z| {NormalDist().inv_cdf(1 - p / 2):.2f}; chance the largest of 100 independent "
+          f"null tests is at least as extreme {1 - (1 - p) ** 100:.2f}")
+import csv
+from pathlib import Path
+with open(Path(__file__).parent / "data" / "XLK.csv") as f:
+    row = next(r for r in csv.DictReader(f) if r["date"] == "2015-08-24")
+o, low = float(row["open"]), float(row["low"])
+print(f"  XLK on 2015-08-24: low {1 - low / o:.1%} below the open")
+
+first_day = next(d for d in T.DAYS if d >= T.START)
+k0 = T.DAYS.index(first_day)
+trading = [s for s in T.UNIVERSE if T.CLOSES[s][k0] == T.CLOSES[s][k0]]
+all_from = next(d for k, d in enumerate(T.DAYS)
+                if all(T.CLOSES[s][k] == T.CLOSES[s][k] for s in T.UNIVERSE))
+print(f"  ETFs trading on {first_day}: {len(trading)}; all {len(T.UNIVERSE)} from {all_from}")
