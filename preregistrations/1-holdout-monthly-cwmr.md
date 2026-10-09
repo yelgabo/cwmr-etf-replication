@@ -1,4 +1,4 @@
-# Holdout test of monthly CWMR, 2025-2026 (paper Section 5)
+# Holdout test of monthly CWMR, 2025-2026 (paper Section 7)
 
 | | |
 |---|---|

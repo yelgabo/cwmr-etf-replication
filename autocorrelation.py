@@ -1,4 +1,4 @@
-"""Section 8: next-day autocorrelation of each ETF's daily return in excess of SPY's, 1999-2024.
+"""Section 9: next-day autocorrelation of each ETF's daily return in excess of SPY's, 1999-2024.
 Reports the median across the 15 non-SPY ETFs.
 
     uv run python autocorrelation.py

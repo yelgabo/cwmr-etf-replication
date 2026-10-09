@@ -1,4 +1,4 @@
-# Monthly CWMR on ETFs spliced with stand-in funds, 1995-2015 (paper Section 7, superseded)
+# Monthly CWMR on ETFs spliced with stand-in funds, 1995-2015 (paper Section 8, superseded)
 
 | | |
 |---|---|
@@ -7,7 +7,7 @@
 | Received by GitHub (push event) | 2026-10-06 08:12:12 UTC |
 
 Note added for publication: this test filled orders at the decision's own close and filled the
-years before each ETF's launch with stand-in funds. The paper no longer relies on it (Section 7).
+years before each ETF's launch with stand-in funds. The paper no longer relies on it (Section 8).
 Paths refer to files in https://github.com/yelgabo/btest.
 
 ## Text as committed

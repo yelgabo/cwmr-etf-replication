@@ -1,4 +1,4 @@
-"""Tables 4 to 7 and Sections 4 to 7 of the paper: CWMR on 16 ETFs, 1999-2024, daily data,
+"""Tables 4 to 7 and Sections 4 to 6 and 8 of the paper: CWMR on 16 ETFs, 1999-2024, daily data,
 deciding on each session's close and filling at the next session's open.
 
     uv run python etf_tables.py
@@ -12,7 +12,7 @@ from cwmr_etf.cwmr import OnlineCWMR
 
 UNIVERSE = data.ETFS
 START, END = date(1999, 1, 1), date(2025, 1, 1)
-# The window the 1999-2015 plan registered (Section 7).
+# The window the 1999-2015 plan registered (Section 8).
 REGISTERED_END = date(2016, 1, 1)
 RATES = data.tbill()
 CALENDAR = data.sessions(data.START, date(2027, 12, 31))
@@ -25,8 +25,8 @@ def cwmr(bars, block=None):
 
 
 def equal_weight():
-    """Equal weight in every symbol with two prices, reset on the last session of each month
-    (and on the first session, when nothing is held)."""
+    """Equal weight in every symbol trading by the previous session, reset on the last session
+    of each month (and on the first session, when nothing is held)."""
     month_end = backtest.decision_days(CALENDAR, "month_end")
 
     def decide(i, account):
@@ -132,7 +132,7 @@ if __name__ == "__main__":
     print(f"{'Signal at week end, trade a session later':42}{c:8.2%}{sh:8.2f}"
           f"   bootstrap p vs EW {p:.3f}")
 
-    print("\nSection 7. The registered 1999-2015 test: CAGR and Sharpe over T-bills, 0.7 bp")
+    print("\nSection 8. The registered 1999-2015 test: CAGR and Sharpe over T-bills, 0.7 bp")
     for name in ("Weekly bars", "Monthly bars", "Equal weight", "SPY"):
         make, on = SCHEDULES[name]
         r = run(make(), on, end=REGISTERED_END)

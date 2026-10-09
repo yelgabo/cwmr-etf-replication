@@ -16,9 +16,30 @@ Lag-1 autocorrelation of the daily return difference (negative: longer blocks gi
   Weekly bars minus equal weight: -0.058
 Correlation of daily returns across the paired tests: 0.90 to 0.98
 Weekly bars fills per year: 1999 238, 2000 313, 2001 290
+Daily fills per year: 1999 1000, 2000 1147, 2001 1190
+Daily turnover by year (dollars traded over that year's mean equity): mean 230x, 1999-2005 358x to 410x
+Weekly bars turnover by year (dollars traded over that year's mean equity): mean 76x, 1999-2005 61x to 85x
+CAGR by part of the window, to show where each lead comes from
+  Daily          1999-2008 10.33%  2009-2024 13.27%
+  Weekly bars    1999-2008  3.20%  2009-2024 18.04%
+  Equal weight   1999-2008  1.72%  2009-2024 12.75%
+  SPY            1999-2008 -1.46%  2009-2024 14.52%
+Variance ratios of the weekly bars minus equal weight return difference: 5-day 0.85, 21-day 0.68, 63-day 0.53, 126-day 0.50
+
+Annual log-return lead, 21-day block bootstrap: lead [95% interval], p, Holm-adjusted p
+  Daily vs Equal weight                  +3.41% [+0.62%, +6.32%]  p 0.021  Holm 0.148
+  Monthly, daily signal vs Equal weight  -0.61% [-3.02%, +1.71%]  p 0.607  Holm 1.000
+  Monthly bars vs Equal weight           +2.09% [-0.51%, +4.73%]  p 0.115  Holm 0.530
+  Weekly bars vs Equal weight            +3.39% [+0.58%, +6.32%]  p 0.021  Holm 0.148
+  Daily vs SPY                           +3.67% [+0.77%, +6.86%]  p 0.018  Holm 0.148
+  Monthly, daily signal vs SPY           -0.35% [-2.76%, +2.15%]  p 0.777  Holm 1.000
+  Monthly bars vs SPY                    +2.35% [-0.41%, +5.30%]  p 0.106  Holm 0.530
+  Weekly bars vs SPY                     +3.64% [+1.00%, +6.55%]  p 0.009  Holm 0.085
+  Equal weight vs SPY                    +0.26% [-0.89%, +1.51%]  p 0.680  Holm 1.000
 
 Weekly bars: 1356 decisions; median ETFs held 2; largest weight 90% or more in 36% of weeks, 50% or more in 80%
-CWMR updates computed (learning from 1995): 2919; not firing: 12 (0.41%)
+Weekly CWMR updates (learning from 1995): 1563; not firing: 6 (0.38%)
 
 Next returns per 1% weekly move in excess of SPY, bp
-  close to next open +0.10; next open to the open after -3.33
+  close to next open: +0.10 (s.e. 0.63, clustered by week)
+  next open to the open after: -3.33 (s.e. 1.24, clustered by week)

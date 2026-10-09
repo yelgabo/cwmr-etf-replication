@@ -37,7 +37,7 @@ Calendar weeks (Friday)       12.10%    0.55    0.083
 Section 6. Weekly bars traded one session late, 0.7 bp
 Signal at week end, trade a session later    9.51%    0.44   bootstrap p vs EW 0.843
 
-Section 7. The registered 1999-2015 test: CAGR and Sharpe over T-bills, 0.7 bp
+Section 8. The registered 1999-2015 test: CAGR and Sharpe over T-bills, 0.7 bp
 Weekly bars                9.82%    0.45
 Monthly bars               8.90%    0.40
 Equal weight               6.59%    0.33
