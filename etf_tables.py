@@ -1,4 +1,4 @@
-"""Tables 5 to 8 and Section 6.4 of the paper: CWMR on weekly and monthly bars over 16 ETFs, 1999-2024.
+"""Tables 5 to 9 and Section 6.4 of the paper: CWMR on weekly and monthly bars over 16 ETFs, 1999-2024.
 
     uv run python etf_tables.py
 
@@ -71,6 +71,9 @@ def strategies(end):
     }
 
 
+PAIRS = (("Weekly bars", "SPY"), ("Weekly bars", "Equal weight"), ("Monthly bars", "SPY"),
+         ("Monthly bars", "Equal weight"), ("Equal weight", "SPY"))
+
 print("Table 5. Pre-registered test, 1999-2015, 0.7 bp per dollar traded")
 print(f"{'':14}{'CAGR':>8}{'Sharpe':>8}{'Max DD':>9}{'Turnover':>10}")
 res = {name: run(S2016, f, on) for name, (f, on) in strategies(S2016).items()}
@@ -79,13 +82,23 @@ for name, r in res.items():
     print(f"{name:14}{c:8.2%}{sh:8.2f}{dd:9.1%}{to:9.1f}x")
 print("\nTable 6. Paired Sharpe tests, 1999-2015: annual Sharpe difference, Jobson-Korkie-Memmel"
       " p, 21-day block bootstrap p and 95% interval")
-for a, b in (("Weekly bars", "SPY"), ("Weekly bars", "Equal weight"), ("Monthly bars", "SPY"),
-             ("Monthly bars", "Equal weight"), ("Equal weight", "SPY")):
+for a, b in PAIRS:
     jk = stats.paired_sharpe_test(res[a].equity, res[b].equity)[1]
     d, p, (lo, hi) = stats.block_bootstrap(res[a].equity, res[b].equity)
     print(f"{a + ' vs ' + b:28}{d:+6.2f}{jk:8.2f}{p:8.3f}   [{lo:+.2f}, {hi:+.2f}]")
 
-print("\nTable 7. Weekly bars by where the week ends, 1999-2024, 0.7 bp, CAGR")
+print("\nTable 7. Exploratory: the whole period, 1999-2024, 0.7 bp; paired tests as in Table 6")
+print(f"{'':14}{'CAGR':>8}{'Sharpe':>8}{'Max DD':>9}{'Turnover':>10}")
+whole = {name: run(S2025, f, on) for name, (f, on) in strategies(S2025).items()}
+for name, r in whole.items():
+    c, sh, dd, to = describe(r)
+    print(f"{name:14}{c:8.2%}{sh:8.2f}{dd:9.1%}{to:9.1f}x")
+for a, b in PAIRS:
+    jk = stats.paired_sharpe_test(whole[a].equity, whole[b].equity)[1]
+    d, p, (lo, hi) = stats.block_bootstrap(whole[a].equity, whole[b].equity)
+    print(f"{a + ' vs ' + b:28}{d:+6.2f}{jk:8.2f}{p:8.3f}   [{lo:+.2f}, {hi:+.2f}]")
+
+print("\nTable 8. Weekly bars by where the week ends, 1999-2024, 0.7 bp, CAGR")
 print(f"{'':28}{'1999-2015':>11}{'2016-2024':>11}{'1999-2024':>11}")
 days25, closes25, _ = PANELS[S2025]
 versions = {"Calendar weeks (Friday)": (cwmr(days25, closes25, "weekly"), weekly_on)}
@@ -100,7 +113,7 @@ for name, (f, on) in versions.items():
              for lo, hi in ((S1999, S2016), (S2016, S2025), (S1999, S2025))]
     print(f"{name:28}" + "".join(f"{c:11.1%}" for c in cells))
 
-print("\nTable 8. Weekly bars at higher costs per dollar traded, CAGR")
+print("\nTable 9. Weekly bars at higher costs per dollar traded, CAGR")
 print(f"{'':12}" + "".join(f"{bp:>9} bp" for bp in (0.7, 5, 10, 20)))
 for end in (S2016, S2025):
     days, closes, _ = PANELS[end]

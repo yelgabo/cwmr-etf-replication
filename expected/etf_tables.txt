@@ -12,7 +12,19 @@ Monthly bars vs SPY          +0.14    0.17   0.069   [-0.01, +0.30]
 Monthly bars vs Equal weight +0.06    0.50   0.409   [-0.08, +0.20]
 Equal weight vs SPY          +0.08    0.10   0.025   [+0.01, +0.16]
 
-Table 7. Weekly bars by where the week ends, 1999-2024, 0.7 bp, CAGR
+Table 7. Exploratory: the whole period, 1999-2024, 0.7 bp; paired tests as in Table 6
+                  CAGR  Sharpe   Max DD  Turnover
+Weekly bars     12.10%    0.55   -50.1%     76.1x
+Monthly bars    10.66%    0.49   -61.4%     14.1x
+Equal weight     8.37%    0.42   -54.4%      0.3x
+SPY              8.09%    0.40   -55.2%      0.0x
+Weekly bars vs SPY           +0.14    0.10   0.031   [+0.02, +0.28]
+Weekly bars vs Equal weight  +0.12    0.14   0.080   [-0.02, +0.26]
+Monthly bars vs SPY          +0.07    0.38   0.280   [-0.06, +0.21]
+Monthly bars vs Equal weight +0.05    0.46   0.398   [-0.07, +0.18]
+Equal weight vs SPY          +0.02    0.63   0.554   [-0.04, +0.09]
+
+Table 8. Weekly bars by where the week ends, 1999-2024, 0.7 bp, CAGR
                               1999-2015  2016-2024  1999-2024
 Calendar weeks (Friday)            9.8%      16.5%      12.1%
 5-session blocks, offset 0         9.0%      14.8%      11.0%
@@ -23,7 +35,7 @@ Calendar weeks (Friday)            9.8%      16.5%      12.1%
 Equal weight                       6.6%      11.8%       8.4%
 SPY                                4.9%      14.4%       8.1%
 
-Table 8. Weekly bars at higher costs per dollar traded, CAGR
+Table 9. Weekly bars at higher costs per dollar traded, CAGR
                   0.7 bp        5 bp       10 bp       20 bp
 1999-2015          9.82%       6.25%       2.24%      -5.32%
 1999-2024         12.10%       8.50%       4.46%      -3.17%

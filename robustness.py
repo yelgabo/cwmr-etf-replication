@@ -1,7 +1,7 @@
 """Checks quoted in Sections 2, 6 and 8 of the paper:
 
 - bootstrap p-values for weekly bars against SPY and equal weight at several block lengths,
-  and Holm-adjusted p-values for the five comparisons of Table 6;
+  and Holm-adjusted p-values for the five comparisons of Tables 6 and 7;
 - how concentrated weekly bars is, and how often the CWMR update does not fire;
 - where the weekly reversal happens: each ETF's return in excess of SPY's from the signal's
   close to the next open, and from that open to the open after, regressed on the week's
@@ -30,13 +30,29 @@ for a, b in (("Weekly bars", "SPY"), ("Weekly bars", "Equal weight"), ("Monthly 
 
 pairs = (("Weekly bars", "SPY"), ("Weekly bars", "Equal weight"), ("Monthly bars", "SPY"),
          ("Monthly bars", "Equal weight"), ("Equal weight", "SPY"))
-p = np.array([stats.block_bootstrap(res[a].equity, res[b].equity)[1] for a, b in pairs])
-adjusted, running = np.empty(len(p)), 0.0
-for rank, k in enumerate(np.argsort(p)):
-    running = max(running, min(1.0, (len(p) - rank) * p[k]))
-    adjusted[k] = running
-print("\nHolm-adjusted bootstrap p (21-day blocks)")
-for (a, b), x in zip(pairs, adjusted):
+
+
+def holm(runs):
+    p = np.array([stats.block_bootstrap(runs[a].equity, runs[b].equity)[1] for a, b in pairs])
+    adjusted, running = np.empty(len(p)), 0.0
+    for rank, k in enumerate(np.argsort(p)):
+        running = max(running, min(1.0, (len(p) - rank) * p[k]))
+        adjusted[k] = running
+    return adjusted
+
+
+print("\nHolm-adjusted bootstrap p (21-day blocks), 1999-2015")
+for (a, b), x in zip(pairs, holm(res)):
+    print(f"  {a} vs {b}: {x:.3f}")
+
+whole = {n: T.run(T.S2025, f, on) for n, (f, on) in T.strategies(T.S2025).items()}
+print("\nBootstrap p by block length, 1999-2024 (Table 7)")
+for a, b in pairs:
+    ps = [stats.block_bootstrap(whole[a].equity, whole[b].equity, block=k)[1]
+          for k in (1, 5, 21, 63, 126)]
+    print(f"  {a} vs {b}: " + ", ".join(f"{k}-day {p:.3f}" for k, p in zip((1, 5, 21, 63, 126), ps)))
+print("Holm-adjusted bootstrap p (21-day blocks), 1999-2024")
+for (a, b), x in zip(pairs, holm(whole)):
     print(f"  {a} vs {b}: {x:.3f}")
 
 days, closes, opens = T.PANELS[T.S2025]
