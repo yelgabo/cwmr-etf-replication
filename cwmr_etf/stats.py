@@ -66,7 +66,7 @@ def block_bootstrap(eq1: np.ndarray, eq2: np.ndarray, block: int = 21, draws: in
     offsets = np.arange(block)
     out = np.empty(draws)
     for j in range(draws):
-        idx = (rng.integers(0, n - block, k)[:, None] + offsets).ravel()
+        idx = (rng.integers(0, n - block + 1, k)[:, None] + offsets).ravel()
         a, b = r1[idx], r2[idx]
         out[j] = (a.mean() / a.std() - b.mean() / b.std()) * math.sqrt(TRADING_DAYS)
     p = float(np.mean(np.abs(out - out.mean()) >= abs(diff)))

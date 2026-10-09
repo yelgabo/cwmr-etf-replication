@@ -8,7 +8,7 @@
 
 Note added for publication: this test filled orders at the decision's own close and filled the
 years before each ETF's launch with stand-in funds. The paper no longer relies on it (Section 7).
-Paths refer to files in the author's private repository.
+Paths refer to files in https://github.com/yelgabo/btest.
 
 ## Text as committed
 

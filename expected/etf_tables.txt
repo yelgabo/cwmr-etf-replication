@@ -6,11 +6,11 @@ Equal weight     6.59%    0.33   -54.4%      0.3x
 SPY              4.90%    0.25   -55.2%      0.0x
 
 Table 6. Paired Sharpe tests, 1999-2015: annual Sharpe difference, Jobson-Korkie-Memmel p, 21-day block bootstrap p and 95% interval
-Weekly bars vs SPY           +0.20    0.09   0.022   [+0.03, +0.37]
-Weekly bars vs Equal weight  +0.11    0.30   0.198   [-0.05, +0.29]
-Monthly bars vs SPY          +0.14    0.17   0.069   [-0.01, +0.30]
-Monthly bars vs Equal weight +0.06    0.50   0.409   [-0.08, +0.20]
-Equal weight vs SPY          +0.08    0.10   0.025   [+0.01, +0.16]
+Weekly bars vs SPY           +0.20    0.09   0.023   [+0.03, +0.37]
+Weekly bars vs Equal weight  +0.11    0.30   0.201   [-0.06, +0.29]
+Monthly bars vs SPY          +0.14    0.17   0.071   [-0.01, +0.30]
+Monthly bars vs Equal weight +0.06    0.50   0.411   [-0.08, +0.20]
+Equal weight vs SPY          +0.08    0.10   0.023   [+0.02, +0.16]
 
 Table 7. Exploratory: the whole period, 1999-2024, 0.7 bp; paired tests as in Table 6
                   CAGR  Sharpe   Max DD  Turnover
@@ -19,10 +19,10 @@ Monthly bars    10.66%    0.49   -61.4%     14.1x
 Equal weight     8.37%    0.42   -54.4%      0.3x
 SPY              8.09%    0.40   -55.2%      0.0x
 Weekly bars vs SPY           +0.14    0.10   0.031   [+0.02, +0.28]
-Weekly bars vs Equal weight  +0.12    0.14   0.080   [-0.02, +0.26]
-Monthly bars vs SPY          +0.07    0.38   0.280   [-0.06, +0.21]
-Monthly bars vs Equal weight +0.05    0.46   0.398   [-0.07, +0.18]
-Equal weight vs SPY          +0.02    0.63   0.554   [-0.04, +0.09]
+Weekly bars vs Equal weight  +0.12    0.14   0.083   [-0.02, +0.27]
+Monthly bars vs SPY          +0.07    0.38   0.279   [-0.06, +0.22]
+Monthly bars vs Equal weight +0.05    0.46   0.395   [-0.07, +0.18]
+Equal weight vs SPY          +0.02    0.63   0.551   [-0.04, +0.09]
 
 Table 8. Weekly bars by where the week ends, 1999-2024, 0.7 bp, CAGR
                               1999-2015  2016-2024  1999-2024
@@ -40,8 +40,8 @@ Table 9. Weekly bars at higher costs per dollar traded, CAGR
 1999-2015          9.82%       6.25%       2.24%      -5.32%
 1999-2024         12.10%       8.50%       4.46%      -3.17%
 
-Section 6.4. Weekly bars traded one session late, 1999-2015, 0.7 bp
-Signal at week end, trade a session later    7.37%    0.35   bootstrap p vs EW 0.90
+Section 6.5. Weekly bars traded one session late, 1999-2015, 0.7 bp
+Signal at week end, trade a session later    7.37%    0.35   bootstrap p vs EW 0.89
 
 Break-even against equal weight, 1999-2015 (equal weight 6.59%)
 Weekly bars at 4 bp: 7.07%

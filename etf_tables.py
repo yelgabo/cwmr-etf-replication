@@ -1,4 +1,4 @@
-"""Tables 5 to 9 and Section 6.4 of the paper: CWMR on weekly and monthly bars over 16 ETFs, 1999-2024.
+"""Tables 5 to 9 and Section 6.5 of the paper: CWMR on weekly and monthly bars over 16 ETFs, 1999-2024.
 
     uv run python etf_tables.py
 
@@ -123,7 +123,7 @@ for end in (S2016, S2025):
         row.append(stats.cagr(r.days, r.equity))
     print(f"1999-{end.year - 1:<7}" + "".join(f"{c:12.2%}" for c in row))
 
-print("\nSection 6.4. Weekly bars traded one session late, 1999-2015, 0.7 bp")
+print("\nSection 6.5. Weekly bars traded one session late, 1999-2015, 0.7 bp")
 days, closes, _ = PANELS[S2016]
 late = OnlineCWMR(UNIVERSE, closes, days, bars="weekly")
 after_week_end = {days[i + 1] for i, d in enumerate(days[:-1]) if d in weekly_on}

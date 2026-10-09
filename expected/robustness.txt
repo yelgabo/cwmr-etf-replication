@@ -1,28 +1,46 @@
 Bootstrap p by block length, 1999-2015
-  Weekly bars vs SPY: 1-day 0.092, 5-day 0.056, 21-day 0.022, 63-day 0.007, 126-day 0.006
-  Weekly bars vs Equal weight: 1-day 0.291, 5-day 0.244, 21-day 0.198, 63-day 0.140, 126-day 0.122
-  Monthly bars vs SPY: 1-day 0.169, 5-day 0.111, 21-day 0.069, 63-day 0.062, 126-day 0.078
-  Monthly bars vs Equal weight: 1-day 0.499, 5-day 0.472, 21-day 0.409, 63-day 0.351, 126-day 0.328
+  Weekly bars vs SPY: 1-day 0.093, 5-day 0.056, 21-day 0.023, 63-day 0.007, 126-day 0.006
+  Weekly bars vs Equal weight: 1-day 0.290, 5-day 0.244, 21-day 0.201, 63-day 0.141, 126-day 0.123
+  Monthly bars vs SPY: 1-day 0.171, 5-day 0.113, 21-day 0.071, 63-day 0.062, 126-day 0.074
+  Monthly bars vs Equal weight: 1-day 0.501, 5-day 0.465, 21-day 0.411, 63-day 0.354, 126-day 0.329
 
 Holm-adjusted bootstrap p (21-day blocks), 1999-2015
-  Weekly bars vs SPY: 0.111
-  Weekly bars vs Equal weight: 0.396
-  Monthly bars vs SPY: 0.207
-  Monthly bars vs Equal weight: 0.409
-  Equal weight vs SPY: 0.111
+  Weekly bars vs SPY: 0.114
+  Weekly bars vs Equal weight: 0.401
+  Monthly bars vs SPY: 0.214
+  Monthly bars vs Equal weight: 0.411
+  Equal weight vs SPY: 0.114
 
 Bootstrap p by block length, 1999-2024 (Table 7)
-  Weekly bars vs SPY: 1-day 0.101, 5-day 0.060, 21-day 0.031, 63-day 0.016, 126-day 0.011
-  Weekly bars vs Equal weight: 1-day 0.145, 5-day 0.104, 21-day 0.080, 63-day 0.050, 126-day 0.049
-  Monthly bars vs SPY: 1-day 0.381, 5-day 0.344, 21-day 0.280, 63-day 0.284, 126-day 0.304
-  Monthly bars vs Equal weight: 1-day 0.462, 5-day 0.446, 21-day 0.398, 63-day 0.383, 126-day 0.393
-  Equal weight vs SPY: 1-day 0.632, 5-day 0.572, 21-day 0.554, 63-day 0.560, 126-day 0.591
+  Weekly bars vs SPY: 1-day 0.098, 5-day 0.064, 21-day 0.031, 63-day 0.017, 126-day 0.012
+  Weekly bars vs Equal weight: 1-day 0.139, 5-day 0.111, 21-day 0.083, 63-day 0.048, 126-day 0.048
+  Monthly bars vs SPY: 1-day 0.383, 5-day 0.332, 21-day 0.279, 63-day 0.284, 126-day 0.303
+  Monthly bars vs Equal weight: 1-day 0.465, 5-day 0.442, 21-day 0.395, 63-day 0.386, 126-day 0.395
+  Equal weight vs SPY: 1-day 0.638, 5-day 0.565, 21-day 0.551, 63-day 0.564, 126-day 0.595
 Holm-adjusted bootstrap p (21-day blocks), 1999-2024
-  Weekly bars vs SPY: 0.153
-  Weekly bars vs Equal weight: 0.318
-  Monthly bars vs SPY: 0.840
-  Monthly bars vs Equal weight: 0.840
-  Equal weight vs SPY: 0.840
+  Weekly bars vs SPY: 0.154
+  Weekly bars vs Equal weight: 0.334
+  Monthly bars vs SPY: 0.838
+  Monthly bars vs Equal weight: 0.838
+  Equal weight vs SPY: 0.838
+
+Holm-adjusted bootstrap p at each block length (1, 5, 21, 63, 126 days)
+  1999-2015 Weekly bars vs SPY: 0.464, 0.224, 0.114, 0.036, 0.029
+  1999-2015 Weekly bars vs Equal weight: 0.580, 0.487, 0.401, 0.282, 0.245
+  1999-2015 Monthly bars vs SPY: 0.512, 0.338, 0.214, 0.187, 0.223
+  1999-2015 Monthly bars vs Equal weight: 0.580, 0.487, 0.411, 0.354, 0.329
+  1999-2015 Equal weight vs SPY: 0.464, 0.179, 0.114, 0.124, 0.170
+  1999-2024 Weekly bars vs SPY: 0.489, 0.318, 0.154, 0.087, 0.060
+  1999-2024 Weekly bars vs Equal weight: 0.556, 0.444, 0.334, 0.190, 0.192
+  1999-2024 Monthly bars vs SPY: 1.000, 0.996, 0.838, 0.851, 0.910
+  1999-2024 Monthly bars vs Equal weight: 1.000, 0.996, 0.838, 0.851, 0.910
+  1999-2024 Equal weight vs SPY: 1.000, 0.996, 0.838, 0.851, 0.910
+
+Why longer blocks give smaller p: lag-1 autocorrelation of the daily return difference
+  1999-2015 weekly bars minus equal weight: -0.072
+  1999-2024 weekly bars minus equal weight: -0.058
+Correlation of daily returns, equal weight and SPY, 1999-2015: 0.978
+Weekly bars fills per year: 1999 238, 2000 313, 2001 290
 
 Weekly bars, 1999-2024: 1356 decisions; median ETFs held 2; largest weight 90% or more in 36% of weeks, 50% or more in 80%
 CWMR updates computed: 2919; not firing: 12 (0.41%)

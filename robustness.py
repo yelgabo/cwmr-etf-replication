@@ -32,8 +32,9 @@ pairs = (("Weekly bars", "SPY"), ("Weekly bars", "Equal weight"), ("Monthly bars
          ("Monthly bars", "Equal weight"), ("Equal weight", "SPY"))
 
 
-def holm(runs):
-    p = np.array([stats.block_bootstrap(runs[a].equity, runs[b].equity)[1] for a, b in pairs])
+def holm(runs, block=21):
+    p = np.array([stats.block_bootstrap(runs[a].equity, runs[b].equity, block=block)[1]
+                  for a, b in pairs])
     adjusted, running = np.empty(len(p)), 0.0
     for rank, k in enumerate(np.argsort(p)):
         running = max(running, min(1.0, (len(p) - rank) * p[k]))
@@ -54,6 +55,26 @@ for a, b in pairs:
 print("Holm-adjusted bootstrap p (21-day blocks), 1999-2024")
 for (a, b), x in zip(pairs, holm(whole)):
     print(f"  {a} vs {b}: {x:.3f}")
+
+print("\nHolm-adjusted bootstrap p at each block length (1, 5, 21, 63, 126 days)")
+for label, runs in (("1999-2015", res), ("1999-2024", whole)):
+    by_block = [holm(runs, k) for k in (1, 5, 21, 63, 126)]
+    for j, (a, b) in enumerate(pairs):
+        print(f"  {label} {a} vs {b}: " + ", ".join(f"{h[j]:.3f}" for h in by_block))
+
+
+def daily_returns(r):
+    return r.equity[1:] / r.equity[:-1] - 1
+
+
+print("\nWhy longer blocks give smaller p: lag-1 autocorrelation of the daily return difference")
+for label, runs in (("1999-2015", res), ("1999-2024", whole)):
+    diff = daily_returns(runs["Weekly bars"]) - daily_returns(runs["Equal weight"])
+    print(f"  {label} weekly bars minus equal weight: {np.corrcoef(diff[1:], diff[:-1])[0, 1]:+.3f}")
+corr = np.corrcoef(daily_returns(res["Equal weight"]), daily_returns(res["SPY"]))[0, 1]
+print(f"Correlation of daily returns, equal weight and SPY, 1999-2015: {corr:.3f}")
+w = whole["Weekly bars"].fills_by_year
+print("Weekly bars fills per year: " + ", ".join(f"{y} {w[y]}" for y in (1999, 2000, 2001)))
 
 days, closes, opens = T.PANELS[T.S2025]
 algo = OnlineCWMR(T.UNIVERSE, closes, days, bars="weekly")

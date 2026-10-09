@@ -8,9 +8,9 @@ Pre-Registered Tests on US-Listed ETFs". It reproduces the paper's tables from p
 Requires [uv](https://docs.astral.sh/uv/) and Python 3.11 or later.
 
 ```sh
-uv run python etf_tables.py                                    # Tables 5 to 9 and Section 6.4
+uv run python etf_tables.py                                    # Tables 5 to 9 and Section 6.5
 uv run python autocorrelation.py                               # Section 8 autocorrelations
-uv run python spreads.py                                       # Section 6.3 spread estimates
+uv run python spreads.py                                       # Section 6.4 spread estimates
 uv run python robustness.py                                    # block lengths, Holm, concentration, where the reversal happens
 uv run --with scipy --with cvxpy python original_tables.py     # Section 3 and Table 3
 ```

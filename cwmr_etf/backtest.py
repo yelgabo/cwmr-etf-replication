@@ -35,6 +35,7 @@ class Result:
     equity: np.ndarray
     traded: float
     fills: int
+    fills_by_year: dict[int, int]
 
 
 def decision_days(calendar: list[date], schedule: str) -> set[date]:
@@ -62,12 +63,14 @@ def run(days, closes, opens, decide, decide_on: set[date], start: date, end: dat
     slip = cost_bps / 10_000
     qty = np.zeros(len(symbols))
     traded, nfills, prev = 0.0, 0, None
+    by_year: dict[int, int] = {}
     equity = []
     queued = None
 
     def execute(j: int, eq: float, target: dict[str, float]) -> None:
         """Fill the orders decided on session j at session j + 1's open."""
         nonlocal cash, traded, nfills
+        before = nfills
         held = {s for s in symbols if qty[col[s]]}
         px = {s: close[j, col[s]] for s in set(target) | held
               if not math.isnan(fill[j, col[s]])}
@@ -101,6 +104,8 @@ def run(days, closes, opens, decide, decide_on: set[date], start: date, end: dat
             qty[col[s]] += q
             traded += q * price
             nfills += 1
+        year = days[j + 1].year
+        by_year[year] = by_year.get(year, 0) + nfills - before
 
     trading = [i for i, d in enumerate(days) if start <= d < end]
     for i in trading:
@@ -121,4 +126,4 @@ def run(days, closes, opens, decide, decide_on: set[date], start: date, end: dat
         held = qty != 0
         equity.append(cash + float(qty[held] @ close[i, held]))
         prev = d
-    return Result([days[i] for i in trading], np.array(equity), traded, nfills)
+    return Result([days[i] for i in trading], np.array(equity), traded, nfills, by_year)
