@@ -119,7 +119,8 @@ c, sh, dd, to = describe(r)
 p_ew = stats.block_bootstrap(r.equity, res["Equal weight"].equity)[1]
 print(f"{'Signal at week end, trade a session later':42}{c:8.2%}{sh:8.2f}   bootstrap p vs EW {p_ew:.2f}")
 
-print("\nBreak-even against equal weight, 1999-2015 (equal weight 6.61%)")
+ew = res["Equal weight"]
+print(f"\nBreak-even against equal weight, 1999-2015 (equal weight {stats.cagr(ew.days, ew.equity):.2%})")
 for bp in (4, 4.5):
     r = run(S2016, cwmr(*PANELS[S2016][:2], "weekly"), weekly_on, cost_bps=bp)
     print(f"Weekly bars at {bp} bp: {stats.cagr(r.days, r.equity):.2%}")

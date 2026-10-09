@@ -1,14 +1,14 @@
 Bootstrap p by block length, 1999-2015
-  Weekly bars vs SPY: 1-day 0.111, 5-day 0.059, 21-day 0.026, 63-day 0.008, 126-day 0.006
-  Weekly bars vs Equal weight: 1-day 0.328, 5-day 0.263, 21-day 0.218, 63-day 0.160, 126-day 0.139
-  Monthly bars vs SPY: 1-day 0.171, 5-day 0.113, 21-day 0.070, 63-day 0.062, 126-day 0.078
-  Monthly bars vs Equal weight: 1-day 0.508, 5-day 0.485, 21-day 0.423, 63-day 0.366, 126-day 0.343
+  Weekly bars vs SPY: 1-day 0.092, 5-day 0.056, 21-day 0.022, 63-day 0.007, 126-day 0.006
+  Weekly bars vs Equal weight: 1-day 0.291, 5-day 0.244, 21-day 0.198, 63-day 0.140, 126-day 0.122
+  Monthly bars vs SPY: 1-day 0.169, 5-day 0.111, 21-day 0.069, 63-day 0.062, 126-day 0.078
+  Monthly bars vs Equal weight: 1-day 0.499, 5-day 0.472, 21-day 0.409, 63-day 0.351, 126-day 0.328
 
 Holm-adjusted bootstrap p (21-day blocks)
   Weekly bars vs SPY: 0.111
-  Weekly bars vs Equal weight: 0.435
-  Monthly bars vs SPY: 0.209
-  Monthly bars vs Equal weight: 0.435
+  Weekly bars vs Equal weight: 0.396
+  Monthly bars vs SPY: 0.207
+  Monthly bars vs Equal weight: 0.409
   Equal weight vs SPY: 0.111
 
 Weekly bars, 1999-2024: 1356 decisions; median ETFs held 2; largest weight 90% or more in 36% of weeks, 50% or more in 80%

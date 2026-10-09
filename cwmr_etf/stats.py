@@ -14,14 +14,15 @@ def cagr(days: list[date], equity: np.ndarray) -> float:
 
 
 def sharpe(days: list[date], equity: np.ndarray, rates) -> float:
-    """Annualised mean daily return in excess of the T-bill rate, over the daily volatility."""
+    """Annualised mean daily return in excess of the T-bill rate, over its standard deviation."""
     rate_dates, rate_values = rates
     ret = equity[1:] / equity[:-1] - 1
     rf = []
     for d in days[1:]:
         k = bisect.bisect_right(rate_dates, d)
         rf.append(rate_values[k - 1] / 100 / TRADING_DAYS if k > 0 else 0.0)
-    return float((ret - np.array(rf)).mean() / ret.std(ddof=1) * math.sqrt(TRADING_DAYS))
+    excess = ret - np.array(rf)
+    return float(excess.mean() / excess.std(ddof=1) * math.sqrt(TRADING_DAYS))
 
 
 def max_drawdown(equity: np.ndarray) -> float:
